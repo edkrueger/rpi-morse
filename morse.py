@@ -35,6 +35,10 @@ def signal_char(char):
                dash()
                pause()
 
+     # pause for 3 after each character
+     for _ in range(3):
+          pause()
+
 def signal_string(s):
      for char in s:
           signal_char(char)
