@@ -1,8 +1,13 @@
 import RPi.GPIO as GPIO
+
 import time
 
+from morse_lookup import char_to_morse
+
+PHRASE = "SOS"
+
 PIN = 5
-DOT_DURATION = 1
+DOT_DURATION = 100 / 1000
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(PIN, GPIO.OUT)
@@ -21,27 +26,17 @@ def dash():
 def pause():
      time.sleep(DOT_DURATION)
 
-def s():
-     dot()
-     pause() 
-     dot()
-     pause() 
-     dot()
-     pause() 
+def signal_char(char):
+     for bit in char_to_morse(char):
+          if bit == ".":
+               dot()
+               pause()
+          if bit == "-":
+               dash()
+               pause()
 
-def o():     
-     dash()
-     pause() 
-     dash()
-     pause() 
-     dash()
-     pause() 
+def signal_string(s):
+     for char in s:
+          signal_char(char)
 
-def sos():
-     s()
-     o()
-     s()
-
-sos()
-
-
+signal_string(PHRASE)
