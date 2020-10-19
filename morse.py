@@ -2,19 +2,46 @@ import RPi.GPIO as GPIO
 import time
 
 PIN = 5
-DURATION = 1
-MAX_BLINKS = 10
+DOT_DURATION = 1
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(PIN, GPIO.OUT)
 
-blinks = 0
-while blinks < MAX_BLINKS:
+def light_on(duration):
      GPIO.output(PIN, GPIO.HIGH)
-     time.sleep(DURATION)
+     time.sleep(duration)
      GPIO.output(PIN, GPIO.LOW)
-     time.sleep(DURATION)
-     blinks += 1
 
+def dot():
+     light_on(DOT_DURATION)
+
+def dash():
+     light_on(3 * DOT_DURATION)
+
+def pause():
+     time.sleep(DOT_DURATION)
+
+def s():
+     dot()
+     pause() 
+     dot()
+     pause() 
+     dot()
+     pause() 
+
+def o():     
+     dash()
+     pause() 
+     dash()
+     pause() 
+     dash()
+     pause() 
+
+def sos():
+     s()
+     o()
+     s()
+
+sos()
 
 
