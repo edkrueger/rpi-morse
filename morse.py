@@ -4,7 +4,7 @@ import time
 
 from morse_lookup import char_to_morse
 
-PHRASE = "SOS"
+PHRASE = "SOS SOS"
 
 PIN = 5
 DOT_DURATION = 100 / 1000
@@ -34,6 +34,9 @@ def signal_char(char):
           if bit == "-":
                dash()
                pause()
+          if bit == " ":
+               for _ in range(4):
+                    pause()
 
      # pause for 3 after each character
      for _ in range(3):

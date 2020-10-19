@@ -2,6 +2,7 @@ import warnings
 
 def char_to_morse(char):
 	char_to_morse_dict = {
+		" ": " ",
 		"A": ".-",
 		"B": "-...",
 		"C": "-.-.",
