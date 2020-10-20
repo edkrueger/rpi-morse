@@ -4,7 +4,7 @@ import time
 
 from morse_lookup import char_to_morse
 
-PHRASE = "SOS SOS"
+PHRASE = "What hath God wrought"
 
 PIN = 5
 DOT_DURATION = 100 / 1000
